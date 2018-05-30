@@ -18,5 +18,11 @@ namespace bot.Services
 			var resp = await http.GetAsync("https://cataas.com/cat");
 			return await resp.Content.ReadAsStreamAsync();
 		}
+
+        public async Task<Stream> GetPictureAsync()
+        {
+            var res = await http.GetAsync("https://pp.userapi.com/c846220/v846220205/3d938/OdWh1UCeNJk.jpg");
+            return await res.Content.ReadAsStreamAsync();
+        }
 	}
 }
