@@ -1,11 +1,11 @@
-D:\Проекты VS\bot\bot\bin\Debug\netcoreapp2.0\bot.deps.json
-D:\Проекты VS\bot\bot\bin\Debug\netcoreapp2.0\bot.runtimeconfig.json
-D:\Проекты VS\bot\bot\bin\Debug\netcoreapp2.0\bot.runtimeconfig.dev.json
-D:\Проекты VS\bot\bot\bin\Debug\netcoreapp2.0\bot.dll
-D:\Проекты VS\bot\bot\obj\Debug\netcoreapp2.0\bot.csprojResolveAssemblyReference.cache
-D:\Проекты VS\bot\bot\obj\Debug\netcoreapp2.0\bot.csproj.CoreCompileInputs.cache
-D:\Проекты VS\bot\bot\obj\Debug\netcoreapp2.0\bot.AssemblyInfoInputs.cache
-D:\Проекты VS\bot\bot\obj\Debug\netcoreapp2.0\bot.AssemblyInfo.cs
-D:\Проекты VS\bot\bot\bin\Debug\netcoreapp2.0\bot.pdb
-D:\Проекты VS\bot\bot\obj\Debug\netcoreapp2.0\bot.dll
-D:\Проекты VS\bot\bot\obj\Debug\netcoreapp2.0\bot.pdb
+/home/discordBot/bin/Debug/netcoreapp2.0/bot.deps.json
+/home/discordBot/bin/Debug/netcoreapp2.0/bot.runtimeconfig.json
+/home/discordBot/bin/Debug/netcoreapp2.0/bot.runtimeconfig.dev.json
+/home/discordBot/bin/Debug/netcoreapp2.0/bot.dll
+/home/discordBot/bin/Debug/netcoreapp2.0/bot.pdb
+/home/discordBot/obj/Debug/netcoreapp2.0/bot.csprojAssemblyReference.cache
+/home/discordBot/obj/Debug/netcoreapp2.0/bot.csproj.CoreCompileInputs.cache
+/home/discordBot/obj/Debug/netcoreapp2.0/bot.AssemblyInfoInputs.cache
+/home/discordBot/obj/Debug/netcoreapp2.0/bot.AssemblyInfo.cs
+/home/discordBot/obj/Debug/netcoreapp2.0/bot.dll
+/home/discordBot/obj/Debug/netcoreapp2.0/bot.pdb

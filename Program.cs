@@ -1,33 +1,71 @@
 ﻿using System;
+using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Discord;
 using Discord.WebSocket;
-using System.Threading.Tasks;
+using Discord.Commands;
+using bot.Services;
 
 namespace bot
 {
+	public enum AnswerResult
+	{
+		Guessed = 0,
+		WrongAnswer = 1,
+		CurrectAnswer = 2
+	}
+
     class Program
     {
-		private DiscordSocketClient client;
+		public static IConfiguration Configuration { get; set; }
 
-        private MessageHandler handler;
+		private DiscordSocketClient client;
 
         static void Main(string[] args)
         {
+			var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+			Configuration = builder.Build();
 			new Program().StartAsync().GetAwaiter().GetResult();
         }
 
 		private async Task StartAsync()
 		{
-			client = new DiscordSocketClient();
-
-            
-			await client.LoginAsync(TokenType.Bot, "NDUwNjUzNTMzNDk1MDk5Mzkz.De2cPA.26XcebFedCvxlXmczqAggo9_iFQ");
+			var services = ConfigureServices();
+			
+			client = services.GetRequiredService<DiscordSocketClient>();
+			client.Ready += ReadyAsync;
+			client.Log += LogAsync;
+			await client.LoginAsync(TokenType.Bot, Configuration["token"]);
 			await client.StartAsync();
+			await services.GetRequiredService<CommandHandlingService>().InitializeAsync();
+			await Task.Delay(-1);
+		}
 
-            handler = new MessageHandler(client);
+		private Task LogAsync(LogMessage log)
+		{
+			Console.WriteLine(log.ToString());
+			return Task.CompletedTask;
+		}
 
-            await Task.Delay(-1);
-
+		private Task ReadyAsync() {
+			Console.WriteLine($"{client.CurrentUser} is connected!");
+			return Task.CompletedTask;
+		}
+		
+		private IServiceProvider ConfigureServices()
+		{
+			return new ServiceCollection()
+				.AddSingleton<DiscordSocketClient>()
+				.AddSingleton<CommandService>()
+				.AddSingleton<CommandHandlingService>()
+				.AddSingleton<HttpClient>()
+				.AddSingleton<ZagadkaService>()
+				.AddSingleton<PictureService>()
+				.AddSingleton<ReputationService>()
+				.BuildServiceProvider();
 		}
     }
 }
